@@ -3,6 +3,10 @@ package sshsign
 import "fmt"
 
 var (
+	// The ErrInvalidSigner error is raised when the signer provided is nil or
+	// cannot otherwise be used for signing.
+	ErrInvalidSigner = fmt.Errorf("invalid signer")
+
 	// The ErrInvalidSignature error is raised when the signature cannot be parsed or
 	// does not match the expected signature for the data being validated.
 	ErrInvalidSignature = fmt.Errorf("invalid signature")

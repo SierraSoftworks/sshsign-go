@@ -39,6 +39,10 @@ func (s *defaultSigner) Sign(data io.Reader) (*Signature, error) {
 		return nil, err
 	}
 
+	if s.signer == nil {
+		return nil, ErrInvalidSigner
+	}
+
 	rw.MustInt64(io.Copy(hash, data))
 
 	h_message := hash.Sum([]byte{})

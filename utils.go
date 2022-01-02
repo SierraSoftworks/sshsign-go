@@ -28,6 +28,10 @@ func getHash(algo string) (hash.Hash, error) {
 // rsa-sha algorithm (which uses SHA-1 and is explicitly not supported by OpenSSL
 // for the signing of data).
 func getSecureSigner(s ssh.Signer) ssh.Signer {
+	if s == nil {
+		return s
+	}
+
 	if s.PublicKey().Type() != ssh.KeyAlgoRSA && s.PublicKey().Type() != ssh.CertAlgoRSAv01 {
 		return s
 	}
