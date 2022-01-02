@@ -1,0 +1,12 @@
+name: Test
+on:
+  - push
+
+jobs:
+  go:
+    name: Test (Go)
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/setup-go@v2
+      - run: go build
+      - run: go test -v ./...
